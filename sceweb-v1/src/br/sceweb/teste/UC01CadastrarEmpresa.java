@@ -14,6 +14,7 @@ public class UC01CadastrarEmpresa {
 	
 	static Empresa empresa;
 	static EmpresaDAO empresaDao;
+	static ControleEmpresa ce;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -69,14 +70,19 @@ public class UC01CadastrarEmpresa {
 	
 	@Test
 	public void CT05UC01A5Cadastra_empresa_com_sucesso_pelo_controle(){
-		
 		ControleEmpresa ce = new ControleEmpresa();
 		ce.excluirEmpresa(empresa.getCnpj());
 		assertEquals("cadastro realizado com sucesso", ce.cadastrarEmpresa(empresa.getCnpj(), empresa.getNomeDaEmpresa(),
 				empresa.getNomeFantasia(),empresa.getEndereco(),empresa.getTelefone()));
 		ce.excluirEmpresa(empresa.getCnpj());
-		
-		
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void CT06UC01A2Cadastrar_empresa_com_cnpj_ja_cad_pelo_controle(){
+		assertEquals("cadastro realizado com sucesso", ce.cadastrarEmpresa(empresa.getCnpj(), empresa.getNomeDaEmpresa(),
+				empresa.getNomeFantasia(),empresa.getEndereco(),empresa.getTelefone()));
+		assertEquals("cadastro realizado com sucesso", ce.cadastrarEmpresa(empresa.getCnpj(), empresa.getNomeDaEmpresa(),
+				empresa.getNomeFantasia(),empresa.getEndereco(),empresa.getTelefone()));
 	}
 	
 	
