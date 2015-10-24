@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import br.sceweb.modelo.ControleEmpresa;
 import br.sceweb.modelo.Empresa;
 import br.sceweb.modelo.EmpresaDAO;
 
@@ -64,6 +65,18 @@ public class UC01CadastrarEmpresa {
 		} catch (Exception e) {
 			assertEquals("nome da empresa inválido!", e.getMessage() );
 		}
+	}
+	
+	@Test
+	public void CT05UC01A5Cadastra_empresa_com_sucesso_pelo_controle(){
+		
+		ControleEmpresa ce = new ControleEmpresa();
+		ce.excluirEmpresa(empresa.getCnpj());
+		assertEquals("cadastro realizado com sucesso", ce.cadastrarEmpresa(empresa.getCnpj(), empresa.getNomeDaEmpresa(),
+				empresa.getNomeFantasia(),empresa.getEndereco(),empresa.getTelefone()));
+		ce.excluirEmpresa(empresa.getCnpj());
+		
+		
 	}
 	
 	
