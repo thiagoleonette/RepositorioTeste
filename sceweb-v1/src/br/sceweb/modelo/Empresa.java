@@ -114,5 +114,69 @@ public class Empresa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
+		result = prime * result
+				+ ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result
+				+ ((nomeDaEmpresa == null) ? 0 : nomeDaEmpresa.hashCode());
+		result = prime * result
+				+ ((nomeFantasia == null) ? 0 : nomeFantasia.hashCode());
+		result = prime * result
+				+ ((telefone == null) ? 0 : telefone.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Empresa other = (Empresa) obj;
+		if (cnpj == null) {
+			if (other.cnpj != null) {
+				return false;
+			}
+		} else if (!cnpj.equals(other.cnpj)) {
+			return false;
+		}
+		if (endereco == null) {
+			if (other.endereco != null) {
+				return false;
+			}
+		} else if (!endereco.equals(other.endereco)) {
+			return false;
+		}
+		if (nomeDaEmpresa == null) {
+			if (other.nomeDaEmpresa != null) {
+				return false;
+			}
+		} else if (!nomeDaEmpresa.equals(other.nomeDaEmpresa)) {
+			return false;
+		}
+		if (nomeFantasia == null) {
+			if (other.nomeFantasia != null) {
+				return false;
+			}
+		} else if (!nomeFantasia.equals(other.nomeFantasia)) {
+			return false;
+		}
+		if (telefone == null) {
+			if (other.telefone != null) {
+				return false;
+			}
+		} else if (!telefone.equals(other.telefone)) {
+			return false;
+		}
+		return true;
+	}
 
 }

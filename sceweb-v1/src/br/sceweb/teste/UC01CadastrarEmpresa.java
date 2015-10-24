@@ -33,15 +33,15 @@ public class UC01CadastrarEmpresa {
 	 */
 	@Test
 	public void CT01UC01FBCadastrar_empresa_com_sucesso() {
-		empresaDao.excluir(empresa.getCnpj());
-		assertEquals(1, empresaDao.adicionar(empresa));
-		empresaDao.excluir(empresa.getCnpj());
+		empresaDao.exclui(empresa.getCnpj());
+		assertEquals(1, empresaDao.adiciona(empresa));
+		empresaDao.exclui(empresa.getCnpj());
 	}
 	
 	@Test(expected = RuntimeException.class)
 	public void CT02UC01A2Cadastrar_empresa_com_cnpj_ja_cad(){
-		empresaDao.adicionar(empresa);
-		assertEquals(0, empresaDao.adicionar(empresa));
+		empresaDao.adiciona(empresa);
+		assertEquals(0, empresaDao.adiciona(empresa));
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class UC01CadastrarEmpresa {
 	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		empresaDao.excluir(empresa.getCnpj());
+		empresaDao.exclui(empresa.getCnpj());
 	}
 
 }
